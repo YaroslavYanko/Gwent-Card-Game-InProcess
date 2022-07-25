@@ -1,3 +1,19 @@
+# This game is under development, but you can play it by flipping cards and scoring points !!! 
+# Ця гра знаходиться на стадії розробки, але ви можете грати в неї перекладаючи карти та набираючи очки !!!
+
+# Rules of the game
+- Two players are given four random cards , you need to win two rounds , in each round you need to score more points than your opponent 
+- Place one card on the table and click END TURN 
+- You can also press the button for two seconds and skip a turn (the turn goes to the next player, who can lay out any number of cards and end the round)
+- All cards destroyed or played in the previous round go into the skull deck
+- 
+# Правила гри
+- Двом гравцям дають чотири випадкові карти, вам потрібно виграти два раунди, у кожному раунді вам потрібно набрати більше очок ніж ваш суперник
+- Покладіть одну картку на стіл і натисніть ЗАВЕРШИТИ ХІД
+- Ви також можете зажати кнопку протягом двох секунд і пропустити хід (хід переходить до наступного гравця, який може викласти будь-яку кількість карт і завершити раунд)
+- Всі знищені або розіграні карти в попереднтьому раунді перейдуть колоди з черепом 
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
