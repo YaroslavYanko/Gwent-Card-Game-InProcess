@@ -121,7 +121,7 @@ const UserTwoCards = ({
           {userTwo.cards.map((card, i) => {
             return (
               <img
-                draggable={true}
+                draggable={userTwo.activePlayer}
                 key={i}
                 onDragStart={(e) => dragStart(e)}
                 onDragEnd={(e) => dragEnd(e)}

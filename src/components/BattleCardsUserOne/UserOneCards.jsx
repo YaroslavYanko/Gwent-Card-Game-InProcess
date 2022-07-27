@@ -14,8 +14,8 @@ const UserOneCards = ({
   const [card, setCard] = useState(null);
 
   const firstLineLength = useRef();
-  const secondLineLength = useRef()
-  const thirdLineLength = useRef()
+  const secondLineLength = useRef();
+  const thirdLineLength = useRef();
 
   // const secondLine = useRef();
   // const thirdLine = useRef();
@@ -104,7 +104,7 @@ const UserOneCards = ({
       </div>
       <div className={`${classes.battleBlock} ${classes.rev}`}>
         <div
-        ref={thirdLineLength}
+          ref={thirdLineLength}
           id="thirdLine"
           onDragEnter={(e) => dragEnter(e)}
           onDragLeave={(e) => dragLeave(e)}
@@ -113,7 +113,7 @@ const UserOneCards = ({
           className={classes.battleCardUser_one_thirdLine}
         ></div>
         <div
-         ref={secondLineLength}
+          ref={secondLineLength}
           id="secondLine"
           onDragEnter={(e) => dragEnter(e)}
           onDragLeave={(e) => dragLeave(e)}
@@ -128,19 +128,21 @@ const UserOneCards = ({
         >
           {userOne.cards?.map((card, i) => {
             return (
-              <img
-                draggable={true}
-                key={i}
-                onDragStart={(e) => dragStart(e)}
-                onDragEnd={(e) => dragEnd(e)}
-                onMouseEnter={handleHoverCard}
-                onMouseOut={handlerOutCard}
-                className={classes.battleCard}
-                src={card.img}
-                alt={card.id}
-                data-user={"user1"}
-                data-power={card.power}
-              />
+       
+                <img
+                  draggable={userOne.activePlayer}
+                  key={i}
+                  onDragStart={(e) => dragStart(e)}
+                  onDragEnd={(e) => dragEnd(e)}
+                  onMouseEnter={handleHoverCard}
+                  onMouseOut={handlerOutCard}
+                  className={classes.battleCard}
+                  src={card.img}
+                  alt={card.id}
+                  data-user={"user1"}
+                  data-power={card.power}
+                />
+      
             );
           })}
         </div>
