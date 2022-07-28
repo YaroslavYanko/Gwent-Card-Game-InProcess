@@ -1,8 +1,8 @@
 
 ![Screenshot_3](https://user-images.githubusercontent.com/107879647/180751636-0e05aba1-0a30-4fae-af5e-d46d05b731f4.png)
 
-# This game is under development, but you can play it by flipping cards and scoring points !!! 
-# Ця гра знаходиться на стадії розробки, але ви можете грати в неї перекладаючи карти та набираючи очки !!!
+# Some functionality is not yet available (in progress), but you can play it by flipping cards and scoring points !!! 
+# Деякий функціонал поки недоступний (в процесі), але ви можете грати в неї перекладаючи карти та набираючи очки !!!
 
 # Rules of the game
 - Two players are given four random cards , you need to win two rounds , in each round you need to score more points than your opponent 
