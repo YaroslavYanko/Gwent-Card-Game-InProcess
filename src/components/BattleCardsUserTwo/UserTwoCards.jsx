@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 import classes from "../../components/Cards.module.css";
 
@@ -10,24 +10,13 @@ const UserTwoCards = ({
   setFirstLineLengthTwo,
   setShowButtonChangePlayer,
   playerPass,
+  attackCard,
 }) => {
   const [card, setCard] = useState(0);
-  const firstLineLength = useRef();
 
+  const firstLineLength = useRef();
   const secondLine = useRef();
   const thirdLine = useRef();
-
-  const handleHoverCard = function (e) {
-    const link = e.target;
-    link.style.transition = "all 0.5s ease-in-out";
-    link.classList.add("activeCard");
-  };
-
-  const handlerOutCard = function (e) {
-    const link = e.target;
-    link.style.transition = "all 0.2s ease-in-out";
-    link.classList.remove("activeCard");
-  };
 
   function dragStart(e) {
     ///////////////////////////////////
@@ -81,6 +70,14 @@ const UserTwoCards = ({
   function dragLeave(e) {
     e.target.classList.remove(classes.dropList);
   }
+  useEffect(() => {
+    secondLine.current.childNodes.forEach((el) =>
+      el.setAttribute("draggable", false)
+    );
+    thirdLine.current.childNodes.forEach((el) =>
+      el.setAttribute("draggable", false)
+    );
+  }, [userTwo.activePlayer]);
 
   return (
     <section className={classes.battleCardUser_two}>
@@ -120,18 +117,25 @@ const UserTwoCards = ({
         >
           {userTwo.cards.map((card, i) => {
             return (
-              <img
+              <div
+                className={classes.battleCard_wraper}
                 draggable={userTwo.activePlayer}
                 key={i}
                 onDragStart={(e) => dragStart(e)}
                 onDragEnd={(e) => dragEnd(e)}
-                onMouseEnter={handleHoverCard}
-                onMouseOut={handlerOutCard}
-                className={classes.battleCard}
-                src={card.img}
-                alt={card.id}
+                data-id={card.id}
                 data-power={card.power}
-              />
+              >
+                <img
+                onClick={attackCard}
+                  data-power={card.power}
+                  draggable={false}
+                  className={classes.battleCard}
+                  src={card.img}
+                  alt={card.img}
+                  data-user={'user2'}
+                />
+              </div>
             );
           })}
         </div>

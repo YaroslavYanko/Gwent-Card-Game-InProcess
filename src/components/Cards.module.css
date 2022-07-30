@@ -5,7 +5,6 @@
   flex-direction: column;
 }
 
-
 .battleBlock > div {
   display: flex;
   justify-content: center;
@@ -36,18 +35,13 @@
 }
 
 .battleCard {
-
-  /* margin-left: 5px; */
+  margin-left: 5px;
   border: solid gold 1px;
-
+  width: 100%;
+  height: 100%;
 }
-/* .battleCardUser_two_firstLine > img ,.battleCardUser_one_firstLine > img {
-  margin-left: -10px;
-
-} */
 
 .activeCard {
-  /* transition: all 0.5s ease-in-out; */
   position: relative;
   transform: scale(1.4);
 }
@@ -55,15 +49,14 @@
   display: none;
 }
 
-.dropList{
+.dropList {
   border: solid white 2px;
   border-radius: 4px;
 }
-.usedCard{
-  margin-left: 2px;
-  border: solid red 2px;
-  border-radius: 4px;
-}
+/* .usedCard {
+
+
+} */
 
 .battleCardUser_two_firstLine > img {
   transition: all 0.5s ease-in-out;
@@ -82,24 +75,23 @@
 }
 .battleCardUser_two_thirdLine {
   /* background-color: greenyellow; */
-  height:25%;
+  height: 25%;
 }
 .battleCardUser_two_firstLine {
   /* background-color: teal; */
-  height:30%;
+  height: 28%;
 }
 .battleCardUser_one_secondLine {
   /* background-color: aqua; */
-  height:25%;
+  height: 25%;
 }
 .battleCardUser_one_thirdLine {
   /* background-color: greenyellow; */
-  height:25%;
+  height: 25%;
 }
 .battleCardUser_one_firstLine {
   /* background-color: teal; */
-  height: 30%;
- 
+  height: 28%;
 }
 
 .battleCardUser_one {
@@ -123,3 +115,51 @@
   font-size: 22px;
   font-weight: bold;
 }
+.battleCard_wraper {
+  width: 8%;
+  height: 100%;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+
+}
+
+.battleCard_wraper:hover {
+  transition: all 0.5s ease-in-out;
+  position: relative;
+  transform: scale(1.4);
+}
+
+/* .battleCard_wraper::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: 0px;
+  bottom: 0px;
+  background: red;
+  margin-right: 30px;
+}
+.battleCard_wraper::after {
+  content: "";
+  position: absolute;
+  border-bottom: 20px solid transparent;
+  border-right: 20px solid green;
+  border-top: 20px solid transparent;
+  right: 30px;
+  transform: rotate(-90deg);
+} */
+.arrowAttack{
+  position: absolute;
+  border-bottom: 20px solid transparent;
+  border-right: 20px solid green;
+  border-top: 20px solid transparent;
+  top:0px;
+  right: 30px;
+  /* transform: rotate(90deg); */
+}
+/* .battleCard_wraper::after{
+  content: "4";
+position: absolute;
+  color: white;
+  font-size:2vw
+} */

@@ -43,6 +43,7 @@ export function DeckCardProvider({ children }) {
     cardsInHand: [],
     activePlayer: false,
     playerPass: false,
+    canAttack:true,
     mainDeck: 0,
   });
   const [userTwo, setUserTwo] = useState({
@@ -56,6 +57,7 @@ export function DeckCardProvider({ children }) {
     cardsInHand: [],
     activePlayer: true,
     playerPass: false,
+    canAttack:false,
     mainDeck: 0,
   });
 

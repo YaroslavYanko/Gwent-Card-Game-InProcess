@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 import classes from "../../components/Cards.module.css";
 
@@ -10,29 +10,24 @@ const UserOneCards = ({
   setFirstLineLengthOne,
   setShowButtonChangePlayer,
   playerPass,
+  attackCard,
 }) => {
   const [card, setCard] = useState(null);
 
   const firstLineLength = useRef();
-  const secondLineLength = useRef();
-  const thirdLineLength = useRef();
+  const secondLine = useRef();
+  const thirdLine = useRef();
+
+  // const cardInBattle = useRef();
+
+  // const center = useRef();
+
+  // const targetAttack = useRef();
 
   // const secondLine = useRef();
   // const thirdLine = useRef();
 
   ////////////////////////Drop/////////////////////
-  const handleHoverCard = function (e) {
-    const link = e.target;
-    link.style.transition = "all 0.5s ease-in-out";
-    link.classList.add("activeCard");
-  };
-
-  const handlerOutCard = function (e) {
-    const link = e.target;
-
-    link.style.transition = "all 0.2s ease-in-out";
-    link.classList.remove("activeCard");
-  };
 
   function dragStart(e) {
     ///////////////////////////////////////////////////////////
@@ -53,8 +48,10 @@ const UserOneCards = ({
   }
   function dragDrop(e) {
     if (userOne.activePlayer) {
+      console.log(card);
       card.setAttribute("draggable", false);
-
+      card.parentElement.setAttribute("draggable", false);
+      console.log(card.parentElement);
       e.target.classList.remove(classes.dropList);
 
       card.classList.add(classes.usedCard);
@@ -88,6 +85,49 @@ const UserOneCards = ({
     e.target.classList.remove(classes.dropList);
   }
 
+  useEffect(() => {
+    secondLine.current.childNodes.forEach((el) =>
+      el.setAttribute("draggable", false)
+    );
+    thirdLine.current.childNodes.forEach((el) =>
+      el.setAttribute("draggable", false)
+    );
+  }, [userOne.activePlayer]);
+
+  // function rotateF1(e) {
+  //   const { left, top, height, width } = e.target.getBoundingClientRect();
+
+  //   console.log(left, top, height, width);
+  //   center.current = {
+  //     x: left + width / 2,
+  //     y: top + height / 2,
+  //   };
+  //   targetAttack.current = e.target;
+
+  // }
+
+  // document.addEventListener("mousemove", (e) => {
+  //   if (!center.current) {
+  //     return;
+  //   }
+  //   let coordinates = {
+  //     x: e.clientX - center.current.x,
+  //     y: -(e.clientY - center.current.y),
+  //   };
+
+  //   let angle = Math.round(
+  //     (Math.atan2(coordinates.x, coordinates.y) * 180) / Math.PI
+  //   );
+
+  //   if (angle >= 20 && angle <= 160) {
+  //     targetAttack.current.nextSibling.style.transform = `rotate(${angle}deg)`;
+  //   }
+  // });
+
+  // document.addEventListener("mouseup", () => {
+  //   center.current = null;
+  // });
+
   return (
     <section className={classes.battleCardUser_one}>
       <div className={classes.reboundBlock}>
@@ -104,7 +144,7 @@ const UserOneCards = ({
       </div>
       <div className={`${classes.battleBlock} ${classes.rev}`}>
         <div
-          ref={thirdLineLength}
+          ref={thirdLine}
           id="thirdLine"
           onDragEnter={(e) => dragEnter(e)}
           onDragLeave={(e) => dragLeave(e)}
@@ -113,7 +153,7 @@ const UserOneCards = ({
           className={classes.battleCardUser_one_thirdLine}
         ></div>
         <div
-          ref={secondLineLength}
+          ref={secondLine}
           id="secondLine"
           onDragEnter={(e) => dragEnter(e)}
           onDragLeave={(e) => dragLeave(e)}
@@ -128,21 +168,27 @@ const UserOneCards = ({
         >
           {userOne.cards?.map((card, i) => {
             return (
-       
+              <div
+                // onMouseDown={rotateF1}
+                className={classes.battleCard_wraper}
+                draggable={userOne.activePlayer}
+                key={i}
+                onDragStart={(e) => dragStart(e)}
+                onDragEnd={(e) => dragEnd(e)}
+                data-id={card.id}
+                data-power={card.power}
+              >
                 <img
-                  draggable={userOne.activePlayer}
-                  key={i}
-                  onDragStart={(e) => dragStart(e)}
-                  onDragEnd={(e) => dragEnd(e)}
-                  onMouseEnter={handleHoverCard}
-                  onMouseOut={handlerOutCard}
+                  onClick={attackCard}
+                  data-power={card.power}
+                  draggable={false}
                   className={classes.battleCard}
                   src={card.img}
-                  alt={card.id}
+                  alt={card.img}
                   data-user={"user1"}
-                  data-power={card.power}
                 />
-      
+                {/* <div className={classes.arrowAttack}></div> */}
+              </div>
             );
           })}
         </div>

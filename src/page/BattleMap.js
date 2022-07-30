@@ -20,6 +20,8 @@ const BattleMap = () => {
   const [hideWinnerBaner, setHideWinnerBaner] = useState(false);
   const [showButtonChangePlayer, setShowButtonChangePlayer] = useState(true);
   const [playerPass, setPlayerPass] = useState(false);
+  const [battle, setBattle] = useState({ dmg: null });
+
   const {
     userOne,
     userTwo,
@@ -33,12 +35,12 @@ const BattleMap = () => {
 
   function allPointsUser1(card, firstLineLengthOne) {
     // we add the cards that were used
-    
+
     setUserOne((state) => ({
       ...state,
       cardsUsed: [
         ...state.cardsUsed,
-        ...state.cards.filter((ca) => card.getAttribute("alt") === ca.id),
+        ...state.cards.filter((ca) => card.getAttribute("data-id") === ca.id),
       ],
       winPoints: state.winPoints + Number(card.dataset.power),
       cardsFromMap: [...userOne.cardsFromMap, card],
@@ -53,7 +55,7 @@ const BattleMap = () => {
       ...state,
       cardsUsed: [
         ...state.cardsUsed,
-        ...state.cards.filter((ca) => card.getAttribute("alt") === ca.id),
+        ...state.cards.filter((ca) => card.getAttribute("data-id") === ca.id),
       ],
       winPoints: state.winPoints + Number(card.dataset.power),
       cardsFromMap: [...userTwo.cardsFromMap, card],
@@ -63,26 +65,28 @@ const BattleMap = () => {
   }
 
   function roundEnd() {
-    setShowButtonChangePlayer(true);
+    if (userOne.winPoints !== 0 || userTwo.winPoints !== 0) {
+      setShowButtonChangePlayer(true);
 
-    winnerRound();
+      winnerRound();
 
-    setUserOne((state) => ({
-      ...state,
-      winPoints: 0,
-    }));
-    setUserTwo((state) => ({
-      ...state,
-      winPoints: 0,
-    }));
-    clearBattleLinesCards([...userOne.cardsFromMap, ...userTwo.cardsFromMap]);
+      setUserOne((state) => ({
+        ...state,
+        winPoints: 0,
+      }));
+      setUserTwo((state) => ({
+        ...state,
+        winPoints: 0,
+      }));
+      clearBattleLinesCards([...userOne.cardsFromMap, ...userTwo.cardsFromMap]);
 
-    randomCartUserOne();
-    randomCartUserTwo();
+      randomCartUserOne();
+      randomCartUserTwo();
 
-    setFirstLineLengthOne(1);
-    setFirstLineLengthTwo(1);
-    setPlayerPass(false);
+      setFirstLineLengthOne(1);
+      setFirstLineLengthTwo(1);
+      setPlayerPass(false);
+    }
   }
 
   //Викликати в UseEffect при тому якщо в грявця закінчились карти
@@ -90,12 +94,10 @@ const BattleMap = () => {
     if (userOne.activePlayer === true) {
       setUserOne((state) => ({ ...state, activePlayer: false }));
       setUserTwo((state) => ({ ...state, activePlayer: true }));
-      console.log("userTwo", userOne.activePlayer);
     }
     if (userTwo.activePlayer === true) {
       setUserTwo((state) => ({ ...state, activePlayer: false }));
       setUserOne((state) => ({ ...state, activePlayer: true }));
-      console.log("userTwo", userTwo.activePlayer);
     }
   }
 
@@ -155,6 +157,57 @@ const BattleMap = () => {
     overlay.classList.add("hiddenMod");
   }
 
+  function attackCard(e) {
+    //Змінити data-power тільки для розіграних карт
+    if (userOne.activePlayer && userOne.canAttack) {
+      if (e.target.getAttribute("data-user") === "user1") {
+        setBattle({ dmg: e.target.getAttribute("data-power") });
+        console.log(battle.dmg);
+      }
+      if (e.target.getAttribute("data-user") === "user2" && userOne.canAttack) {
+        let power = e.target.getAttribute("data-power");
+        let result = power - battle.dmg;
+        e.target.setAttribute("data-power", result);
+
+        setUserTwo((state) => ({
+          ...state,
+          winPoints: state.winPoints - battle.dmg,
+        }));
+        setUserOne((state) => ({ ...state, canAttack: false }));
+        setUserTwo((state) => ({ ...state, canAttack: true }));
+      }
+    }
+
+    if (userTwo.activePlayer && userTwo.canAttack) {
+      if (e.target.getAttribute("data-user") === "user2") {
+        setBattle({ dmg: e.target.getAttribute("data-power") });
+        console.log(battle.dmg);
+      }
+      if (e.target.getAttribute("data-user") === "user1" && userTwo.canAttack) {
+        let power = e.target.getAttribute("data-power");
+        let result = power - battle.dmg;
+        e.target.setAttribute("data-power", result);
+
+        setUserOne((state) => ({
+          ...state,
+          winPoints: state.winPoints - battle.dmg,
+        }));
+        setUserTwo((state) => ({ ...state, canAttack: false }));
+        setUserOne((state) => ({ ...state, canAttack: true }));
+      }
+    }
+    // if (e.target.getAttribute("data-user") === "user1") {
+    //   setBattle((state) => ({
+    //     ...state,
+    //     attacking: e.target.getAttribute("data-power"),
+    //   }));
+    // }
+
+    // setUserTwo((state) => ({
+    //   ...state,
+    //   winPoints: state.winPoints - battle.defender,
+    // }));
+  }
   // function winGame() {
   //   //e.target.parentElement.classList.remove("hiddenMod");
 
@@ -192,7 +245,7 @@ const BattleMap = () => {
               <span className={classes.score}>{userOne.winPoints}</span>
             </div>
           </section>
-   
+
           {/* ////////////////////// */}
           <div className={classes.passBlock}>
             {playerPass ? (
@@ -204,7 +257,7 @@ const BattleMap = () => {
             ) : (
               <ButtonTurn changePlayer={changePlayer} />
             )}
-{/*            
+            {/*            
             <ButtonPass skipMove={skipMove} setPlayerPass={setPlayerPass} />
             <ButtonTurn changePlayer={changePlayer} /> */}
           </div>
@@ -225,6 +278,7 @@ const BattleMap = () => {
           {/* /////////////User 1/////////////// */}
 
           <UserOneCards
+            attackCard={attackCard}
             setShowButtonChangePlayer={setShowButtonChangePlayer}
             setFirstLineLengthOne={setFirstLineLengthOne}
             useFirstLineLengthTwo={useFirstLineLengthTwo}
@@ -237,6 +291,7 @@ const BattleMap = () => {
           {/* /////////////User 2/////////////// */}
 
           <UserTwoCards
+            attackCard={attackCard}
             setShowButtonChangePlayer={setShowButtonChangePlayer}
             setFirstLineLengthTwo={setFirstLineLengthTwo}
             useFirstLineLengthOne={useFirstLineLengthOne}
