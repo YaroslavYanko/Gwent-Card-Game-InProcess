@@ -45,9 +45,6 @@
   position: relative;
   transform: scale(1.4);
 }
-.hidden {
-  display: none;
-}
 
 .dropList {
   border: solid white 2px;
@@ -120,13 +117,15 @@
   height: 100%;
   position: relative;
   transition: all 0.2s ease-in-out;
-
+  z-index: 0;
+  display: flex;
 }
 
 .battleCard_wraper:hover {
   transition: all 0.5s ease-in-out;
   position: relative;
   transform: scale(1.4);
+  z-index: 999;
 }
 
 /* .battleCard_wraper::before {
@@ -148,12 +147,12 @@
   right: 30px;
   transform: rotate(-90deg);
 } */
-.arrowAttack{
+.arrowAttack {
   position: absolute;
   border-bottom: 20px solid transparent;
   border-right: 20px solid green;
   border-top: 20px solid transparent;
-  top:0px;
+  top: 0px;
   right: 30px;
   /* transform: rotate(90deg); */
 }
@@ -163,3 +162,25 @@ position: absolute;
   color: white;
   font-size:2vw
 } */
+
+.cardInfo {
+    display: none;
+    position: absolute;
+    /* position: relative; */
+    border-radius: 0px 5px 5px 0px;
+    background-color: yellowgreen;
+    padding: 12px;
+    color: darkolivegreen;
+    width: 239px;
+    height: 228px;
+  
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 96px;
+    margin-left: 5px;
+}
+
+.hidden {
+  display: none;
+}

@@ -11,6 +11,7 @@ const UserOneCards = ({
   setShowButtonChangePlayer,
   playerPass,
   attackCard,
+  cardsUsedUserOne,
 }) => {
   const [card, setCard] = useState(null);
 
@@ -24,8 +25,12 @@ const UserOneCards = ({
 
   // const targetAttack = useRef();
 
-  // const secondLine = useRef();
-  // const thirdLine = useRef();
+  function addAboutCard(e) {
+    // e.target.nextSibling.style.display = "flex";
+  }
+  function removeAboutCard(e) {
+    // e.target.nextSibling.style.display = "none";
+  }
 
   ////////////////////////Drop/////////////////////
 
@@ -48,16 +53,16 @@ const UserOneCards = ({
   }
   function dragDrop(e) {
     if (userOne.activePlayer) {
-      console.log(card);
-      card.setAttribute("draggable", false);
-      card.parentElement.setAttribute("draggable", false);
-      console.log(card.parentElement);
       e.target.classList.remove(classes.dropList);
+      card.setAttribute("draggable", false);
+      card.firstChild.nextSibling.setAttribute("data-user", "user1");
+
+      //card.parentElement.setAttribute("draggable", false);
 
       card.classList.add(classes.usedCard);
       e.target.append(card);
-
-      allPoints(card);
+      cardsUsedUserOne(card);
+      allPoints(secondLine.current.childNodes, thirdLine.current.childNodes);
       setFirstLineLengthOne(firstLineLength.current.childNodes.length);
 
       setUserOne((state) => ({
@@ -69,16 +74,10 @@ const UserOneCards = ({
           img.setAttribute("draggable", false);
         });
       }
-      // firstLineLength.current.childNodes.forEach(el=>el.remove())
+
       setShowButtonChangePlayer(false);
       ///////////Передати довжину блоку з картами після закінчення раунду
       //////////після видачі нових карт
-
-      //When your deck is empty
-      // if (firstLineLength.current.childNodes.length === 0) {
-      //   roundEnd();
-      //   console.log('stop')
-      // }
     }
   }
   function dragLeave(e) {
@@ -177,16 +176,28 @@ const UserOneCards = ({
                 onDragEnd={(e) => dragEnd(e)}
                 data-id={card.id}
                 data-power={card.power}
+                data-attack={card.attack}
               >
+                      <span>{card.power}</span>
                 <img
+                  onMouseOver={addAboutCard}
+                  onMouseOut={removeAboutCard}
                   onClick={attackCard}
                   data-power={card.power}
+                  data-attack={card.attack}
                   draggable={false}
                   className={classes.battleCard}
                   src={card.img}
                   alt={card.img}
-                  data-user={"user1"}
+                  data-id={card.id}
                 />
+                         <span>{card.attack}</span>
+                {/* <div className={`${classes.cardInfo}`}>
+                  <h3>{card.name}</h3>
+                  <h4>{card.faction}</h4>
+                  <span>{card.info}</span>
+                </div> */}
+
                 {/* <div className={classes.arrowAttack}></div> */}
               </div>
             );
