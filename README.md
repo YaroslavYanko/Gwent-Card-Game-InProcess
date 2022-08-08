@@ -1,3 +1,6 @@
+![image](https://user-images.githubusercontent.com/107879647/183371984-3647dc0e-d225-4a54-8d66-354cf027cd57.png)
+
+
 # This game is under development, but you can play it by flipping cards and scoring points !!! 
 # Ця гра знаходиться на стадії розробки, але ви можете грати в неї перекладаючи карти та набираючи очки !!!
 
