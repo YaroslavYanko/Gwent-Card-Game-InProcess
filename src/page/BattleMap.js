@@ -65,7 +65,9 @@ const BattleMap = () => {
       ...state,
       cardsUsed: [
         ...state.cardsUsed,
-        ...state.cards.filter((ca) => card.getAttribute("data-id") === ca.id),
+        ...state.cards.filter(
+          (ca) => Number(card.getAttribute("data-id")) === ca.id
+        ),
       ],
 
       cardsFromMap: [...userOne.cardsFromMap, card],
@@ -76,7 +78,9 @@ const BattleMap = () => {
       ...state,
       cardsUsed: [
         ...state.cardsUsed,
-        ...state.cards.filter((ca) => card.getAttribute("data-id") === ca.id),
+        ...state.cards.filter(
+          (ca) => Number(card.getAttribute("data-id")) === ca.id
+        ),
       ],
 
       cardsFromMap: [...userTwo.cardsFromMap, card],
@@ -105,6 +109,14 @@ const BattleMap = () => {
       setFirstLineLengthOne(1);
       setFirstLineLengthTwo(1);
       setPlayerPass(false);
+
+      // setUserOne((state) => ({
+      //   ...state,
+      //   cardsUsed: [
+      //     ...new Map(state.cardsUsed)
+      //   ],
+
+      // }));
     }
   }
 
@@ -186,43 +198,42 @@ const BattleMap = () => {
   }
 
   function attackCard(e) {
-
-
     if (userOne.activePlayer && userOne.canAttack) {
       if (e.target.getAttribute("data-user") === "user1") {
         setAttack(Number(e.target.getAttribute("data-attack")));
-
       }
       if (attack && e.target.getAttribute("data-user") === "user2") {
         let power = Number(e.target.getAttribute("data-power"));
 
         let result = power - attack;
 
- 
+        e.target.setAttribute("data-power", result);
 
-          e.target.setAttribute("data-power", result);
+        let idT = Number(e.target.getAttribute("data-id"));
+        let findCard = userTwo.cards.findIndex((i) => i.id === idT);
 
-          let idT = Number(e.target.getAttribute("data-id"));
-          let findCard = userTwo.cards.findIndex((i) => i.id === idT);
+        let totalPoints;
+        if (power < attack) {
+          totalPoints = userTwo.winPoints - power;
+        } else {
+          totalPoints = userTwo.winPoints - attack;
+        }
+        setUserTwo((state) => ({
+          ...state,
+          winPoints: totalPoints,
+          cadrds: (state.cards[findCard].power = result),
+        }));
 
-          let totalPoints 
-          if( power < attack){
-            totalPoints = userTwo.winPoints - power;
-          }
-          else{
-            totalPoints = userTwo.winPoints - attack;
-          }
+        setUserOne((state) => ({ ...state, canAttack: false }));
+        setUserTwo((state) => ({ ...state, canAttack: true }));
+        setAttack(null);
+        if (e.target.getAttribute("data-power") <= 0) {
+          e.target.parentElement.remove();
           setUserTwo((state) => ({
             ...state,
-            winPoints: totalPoints ,
-            cadrds: state.cards[findCard].power = result
+            // cardsUsed: [...state.cardsUsed, { ...state.cards[findCard] }],
+            // numberOfDestroyedCards: userOne.cardsUsed.length,
           }));
-  
-          setUserOne((state) => ({ ...state, canAttack: false }));
-          setUserTwo((state) => ({ ...state, canAttack: true }));
-          setAttack(null);
-          if (e.target.getAttribute("data-power") <= 0) {
-            e.target.parentElement.remove();
         }
       }
     }
@@ -230,42 +241,59 @@ const BattleMap = () => {
     if (userTwo.activePlayer && userTwo.canAttack) {
       if (e.target.getAttribute("data-user") === "user2") {
         setAttack(Number(e.target.getAttribute("data-attack")));
-
       }
       if (attack && e.target.getAttribute("data-user") === "user1") {
         let power = Number(e.target.getAttribute("data-power"));
 
         let result = power - attack;
 
- 
+        e.target.setAttribute("data-power", result);
 
-          e.target.setAttribute("data-power", result);
+        let idT = Number(e.target.getAttribute("data-id"));
+        let findCard = userOne.cards.findIndex((i) => i.id === idT);
 
-          let idT = Number(e.target.getAttribute("data-id"));
-          let findCard = userOne.cards.findIndex((i) => i.id === idT);
+        let totalPoints;
+        if (power < attack) {
+          totalPoints = userOne.winPoints - power;
+        } else {
+          totalPoints = userOne.winPoints - attack;
+        }
+        setUserOne((state) => ({
+          ...state,
+          winPoints: totalPoints,
+          cadrds: (state.cards[findCard].power = result),
+        }));
+        console.log(userOne.cards)
+      
+        setUserOne((state) => ({
+          ...state,
+          cards:state.cards.filter(card=>Number(card.id)!==Number(e.target.getAttribute("data-id")))
+        }));
 
-          let totalPoints 
-          if( power < attack){
-            totalPoints = userOne.winPoints - power;
-          }
-          else{
-            totalPoints = userOne.winPoints - attack;
-          }
+        setUserOne((state) => ({ ...state, canAttack: true }));
+        setUserTwo((state) => ({ ...state, canAttack: false }));
+        setAttack(null);
+        if (e.target.getAttribute("data-power") <= 0) {
+          //e.target.parentElement.remove();
+
           setUserOne((state) => ({
             ...state,
-            winPoints: totalPoints ,
-            cadrds: state.cards[findCard].power = result
+            // cardsUsed: [{...state.cards[findCard]} ],
+            // numberOfDestroyedCards: userOne.cardsUsed.length,
           }));
-  
-          setUserOne((state) => ({ ...state, canAttack: true }));
-          setUserTwo((state) => ({ ...state, canAttack: false }));
-          setAttack(null);
-          if (e.target.getAttribute("data-power") <= 0) {
-            e.target.parentElement.remove();
+
+
+
+
         }
       }
     }
   }
+
+ // react-dom.development.js:22839 Uncaught DOMException: Failed to execute 'removeChild' on 'Node': The node to be removed is not a child of this node.
+
+
+  
   // function winGame() {
   //   //e.target.parentElement.classList.remove("hiddenMod");
 
@@ -306,18 +334,19 @@ const BattleMap = () => {
 
           {/* ////////////////////// */}
           <div className={classes.passBlock}>
-            {playerPass ? (
-              <button className={classes.roundEnd} onClick={roundEnd}>
-                <p>ROUND END</p>
-              </button>
-            ) : showButtonChangePlayer ? (
-              <ButtonPass skipMove={skipMove} setPlayerPass={setPlayerPass} />
-            ) : (
-              <ButtonTurn changePlayer={changePlayer} />
-            )}
-            {/*            
-            <ButtonPass skipMove={skipMove} setPlayerPass={setPlayerPass} />
-            <ButtonTurn changePlayer={changePlayer} /> */}
+            <div className={classes.box}>
+              {playerPass ? (
+                <button className={classes.roundEnd} onClick={roundEnd}>
+                  <p>ROUND END</p>
+                </button>
+              ) : showButtonChangePlayer ? (
+                <ButtonPass skipMove={skipMove} setPlayerPass={setPlayerPass} />
+              ) : (
+                <ButtonTurn changePlayer={changePlayer} />
+              )}
+
+              {/* <ButtonTurn changePlayer={changePlayer} /> */}
+            </div>
           </div>
           {/* ///////////////////// */}
           <section className={classes.boxUser_two}>

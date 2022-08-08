@@ -126,6 +126,8 @@ const UserOneCards = ({
   // document.addEventListener("mouseup", () => {
   //   center.current = null;
   // });
+ 
+console.log(userOne.cards)
 
   return (
     <section className={classes.battleCardUser_one}>
@@ -171,12 +173,13 @@ const UserOneCards = ({
                 // onMouseDown={rotateF1}
                 className={classes.battleCard_wraper}
                 draggable={userOne.activePlayer}
-                key={i}
+                key={card.id}
                 onDragStart={(e) => dragStart(e)}
                 onDragEnd={(e) => dragEnd(e)}
                 data-id={card.id}
                 data-power={card.power}
                 data-attack={card.attack}
+                onClickCapture={attackCard}
               >
                       <span>{card.power}</span>
                 <img

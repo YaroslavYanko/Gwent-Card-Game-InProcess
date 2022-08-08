@@ -103,24 +103,24 @@ font-family: 'Kaushan Script', cursive;
   transform: scale(1.5);
 }
 
-/* btnPass:hover{
 
-  transform: rotateY(100deg);
-}
-.passBlock{
+
+
+
+/* .box{
   position: relative;
-  width: 400px;
-height: 400px;
-background-color: #9dfab5;
-  transform: rotateY(0deg);
-  transition: transform 1s ease;
-  transform-style:preserve-3d ;
- 
+  transition: transform 2s;
+  transform-style: preserve-3d;
+}
+.box:hover{
+  transform: rotateY(180deg);
+}
+.btnChangeTurn{
+  transform: translateZ(100px);
+  position: absolute;
 }
 .btnPass{
- position: absolute;
- backface-visibility: hidden;
-} 
-.btnChangeTurn{
-  transform: rotateY(180deg);
+  transform: translateZ(0px);
+  position: absolute;
+
 } */

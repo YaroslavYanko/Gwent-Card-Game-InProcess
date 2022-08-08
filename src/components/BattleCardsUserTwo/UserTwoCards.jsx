@@ -141,7 +141,7 @@ const UserTwoCards = ({
               <div
                 className={classes.battleCard_wraper}
                 draggable={userTwo.activePlayer}
-                key={i}
+                key={card.id}
                 onDragStart={(e) => dragStart(e)}
                 onDragEnd={(e) => dragEnd(e)}
                 data-id={card.id}

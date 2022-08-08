@@ -1,36 +1,36 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 import { useDeck1, useDeck2 } from "./decksOfAllCards";
 
 const DeckCardContext = createContext();
 
 export function DeckCardProvider({ children }) {
-  const initialStateUserOne = {
-    name: "User One",
-    winPoints: 0,
-    winRaund: 0,
-    numberOfDestroyedCards: 0,
-    cardsUsed: [],
-    cards: [],
-    cardsFromMap: [],
-    cardsInHand: [],
-    activePlayer: false,
-    playerPass: false,
-    mainDeck: 0,
-  };
+  // const initialStateUserOne = {
+  //   name: "User One",
+  //   winPoints: 0,
+  //   winRaund: 0,
+  //   numberOfDestroyedCards: 0,
+  //   cardsUsed: [],
+  //   cards: [],
+  //   cardsFromMap: [],
+  //   cardsInHand: [],
+  //   activePlayer: false,
+  //   playerPass: false,
+  //   mainDeck: 0,
+  // };
 
-  const initialStateUserTwo = {
-    name: "User Two",
-    winPoints: 0,
-    winRaund: 0,
-    numberOfDestroyedCards: 0,
-    cardsUsed: [],
-    cards: [],
-    cardsFromMap: [],
-    cardsInHand: [],
-    activePlayer: true,
-    playerPass: false,
-    mainDeck: 0,
-  };
+  // const initialStateUserTwo = {
+  //   name: "User Two",
+  //   winPoints: 0,
+  //   winRaund: 0,
+  //   numberOfDestroyedCards: 0,
+  //   cardsUsed: [],
+  //   cards: [],
+  //   cardsFromMap: [],
+  //   cardsInHand: [],
+  //   activePlayer: true,
+  //   playerPass: false,
+  //   mainDeck: 0,
+  // };
 
   const [userOne, setUserOne] = useState({
     name: "User One",
@@ -67,11 +67,13 @@ export function DeckCardProvider({ children }) {
 
       let removeCard = useDeck1.splice(num, 1);
 
+
       setUserOne((state) => ({
         ...state,
         cards: [...state.cards, ...removeCard],
-        numberOfDestroyedCards: userOne.cardsUsed.length,
+        numberOfDestroyedCards: state.cardsUsed.length,
         mainDeck: useDeck1.length,
+  
       }));
 
       // //we remove cards from the deck and before we add to the setUser card
@@ -87,7 +89,7 @@ export function DeckCardProvider({ children }) {
       setUserTwo((state) => ({
         ...state,
         cards: [...state.cards, ...removeCard],
-        numberOfDestroyedCards: userTwo.cardsUsed.length,
+        numberOfDestroyedCards: state.cardsUsed.length,
         mainDeck: useDeck2.length,
       }));
     }

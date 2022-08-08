@@ -255,7 +255,7 @@ export const useDeck1 = [
 
 export const useDeck2 = [
   {
-    id: 1,
+    id: 29,
     img: "battleCard/first_deck/1.png",
     name: "Geralt of Rivia",
     faction: "Witcher",
@@ -264,7 +264,7 @@ export const useDeck2 = [
     attack: 6,
   },
   {
-    id: 2,
+    id: 30,
     img: "battleCard/first_deck/2.png",
     name: "Geralt of Rivia",
     faction: "Witcher",
@@ -273,7 +273,7 @@ export const useDeck2 = [
     attack: 6,
   },
   {
-    id: 3,
+    id: 31,
     img: "battleCard/first_deck/3.png",
     name: "Geralt of Rivia",
     faction: "Witcher",
@@ -282,7 +282,7 @@ export const useDeck2 = [
     attack: 6,
   },
   {
-    id: 4,
+    id: 32,
     img: "battleCard/first_deck/4.png",
     name: "Geralt of Rivia",
     faction: "Witcher",
@@ -291,7 +291,7 @@ export const useDeck2 = [
     attack: 7,
   },
   {
-    id: 5,
+    id: 33,
     img: "battleCard/first_deck/5.png",
     name: "Geralt of Rivia",
     faction: "Witcher",
@@ -300,7 +300,7 @@ export const useDeck2 = [
     attack: 5,
   },
   {
-    id: 6,
+    id: 34,
     img: "battleCard/first_deck/6.png",
     name: "Geralt of Rivia",
     faction: "Witcher",
@@ -309,7 +309,7 @@ export const useDeck2 = [
     attack: 8,
   },
   {
-    id: 7,
+    id: 35,
     img: "battleCard/first_deck/7.png",
     name: "Geralt of Rivia",
     faction: "Witcher",
@@ -318,7 +318,7 @@ export const useDeck2 = [
     attack: 8,
   },
   {
-    id: 8,
+    id: 36,
     img: "battleCard/first_deck/8.png",
     name: "Geralt of Rivia",
     faction: "Witcher",
@@ -327,7 +327,7 @@ export const useDeck2 = [
     attack: 8,
   },
   {
-    id: 9,
+    id: 38,
     img: "battleCard/first_deck/9.png",
     name: "Geralt of Rivia",
     faction: "Witcher",
@@ -336,7 +336,7 @@ export const useDeck2 = [
     attack: 10,
   },
   {
-    id: 10,
+    id: 39,
     img: "battleCard/first_deck/10.png",
     name: "Geralt of Rivia",
     faction: "Witcher",
@@ -345,7 +345,7 @@ export const useDeck2 = [
     attack: 9,
   },
   {
-    id: 11,
+    id: 40,
     img: "battleCard/first_deck/11.png",
     name: "Geralt of Rivia",
     faction: "Witcher",
@@ -354,7 +354,7 @@ export const useDeck2 = [
     attack: 7,
   },
   {
-    id: 12,
+    id: 41,
     img: "battleCard/first_deck/12.png",
     name: "Geralt of Rivia",
     faction: "Witcher",
@@ -363,7 +363,7 @@ export const useDeck2 = [
     attack: 7,
   },
   {
-    id: 13,
+    id: 42,
     img: "battleCard/first_deck/13.png",
     name: "Geralt of Rivia",
     faction: "Witcher",
@@ -372,7 +372,7 @@ export const useDeck2 = [
     attack: 7,
   },
   {
-    id: 14,
+    id: 43,
     img: "battleCard/first_deck/14.png",
     name: "Geralt of Rivia",
     faction: "Witcher",
@@ -381,7 +381,7 @@ export const useDeck2 = [
     attack: 6,
   },
   {
-    id: 15,
+    id: 44,
     img: "battleCard/first_deck/15.png",
     name: "Geralt of Rivia",
     faction: "Witcher",
@@ -390,7 +390,7 @@ export const useDeck2 = [
     attack: 6,
   },
   {
-    id: 16,
+    id: 45,
     img: "battleCard/first_deck/16.png",
     name: "Geralt of Rivia",
     faction: "Witcher",
@@ -399,7 +399,7 @@ export const useDeck2 = [
     attack: 7,
   },
   {
-    id: 17,
+    id: 46,
     img: "battleCard/first_deck/17.png",
     name: "Geralt of Rivia",
     faction: "Witcher",
@@ -408,7 +408,7 @@ export const useDeck2 = [
     attack: 6,
   },
   {
-    id: 18,
+    id: 47,
     img: "battleCard/first_deck/18.png",
     name: "Geralt of Rivia",
     faction: "Witcher",
@@ -417,7 +417,7 @@ export const useDeck2 = [
     attack: 7,
   },
   {
-    id: 19,
+    id: 48,
     img: "battleCard/first_deck/19.png",
     name: "Geralt of Rivia",
     faction: "Witcher",
@@ -426,7 +426,7 @@ export const useDeck2 = [
     attack: 8,
   },
   {
-    id: 20,
+    id: 49,
     img: "battleCard/first_deck/20.png",
     name: "Geralt of Rivia",
     faction: "Witcher",
@@ -435,7 +435,7 @@ export const useDeck2 = [
     attack: 8,
   },
   {
-    id: 21,
+    id: 50,
     img: "battleCard/first_deck/21.png",
     name: "Geralt of Rivia",
     faction: "Witcher",
@@ -444,7 +444,7 @@ export const useDeck2 = [
     attack: 8,
   },
   {
-    id: 22,
+    id: 51,
     img: "battleCard/first_deck/22.png",
     name: "Geralt of Rivia",
     faction: "Witcher",
@@ -453,7 +453,7 @@ export const useDeck2 = [
     attack: 5,
   },
   {
-    id: 23,
+    id: 52,
     img: "battleCard/first_deck/23.png",
     name: "Geralt of Rivia",
     faction: "Witcher",
@@ -462,7 +462,7 @@ export const useDeck2 = [
     attack: 4,
   },
   {
-    id: 24,
+    id: 53,
     img: "battleCard/first_deck/24.png",
     name: "Geralt of Rivia",
     faction: "Witcher",
@@ -471,7 +471,7 @@ export const useDeck2 = [
     attack: 4,
   },
   {
-    id: 25,
+    id: 54,
     img: "battleCard/first_deck/25.png",
     name: "Geralt of Rivia",
     faction: "Witcher",
@@ -480,7 +480,7 @@ export const useDeck2 = [
     attack: 9,
   },
   {
-    id: 26,
+    id: 55,
     img: "battleCard/first_deck/26.png",
     name: "Geralt of Rivia",
     faction: "Witcher",
@@ -489,7 +489,7 @@ export const useDeck2 = [
     attack: 6,
   },
   {
-    id: 27,
+    id: 56,
     img: "battleCard/first_deck/27.png",
     name: "Geralt of Rivia",
     faction: "Witcher",
@@ -498,7 +498,7 @@ export const useDeck2 = [
     attack: 5,
   },
   {
-    id: 28,
+    id: 57,
     img: "battleCard/first_deck/28.png",
     name: "Geralt of Rivia",
     faction: "Witcher",

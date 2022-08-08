@@ -1,8 +1,5 @@
-
-![Screenshot_3](https://user-images.githubusercontent.com/107879647/180751636-0e05aba1-0a30-4fae-af5e-d46d05b731f4.png)
-
-# Some functionality is not yet available (in progress), but you can play it by flipping cards and scoring points !!! 
-# Деякий функціонал поки недоступний (в процесі), але ви можете грати в неї перекладаючи карти та набираючи очки !!!
+# This game is under development, but you can play it by flipping cards and scoring points !!! 
+# Ця гра знаходиться на стадії розробки, але ви можете грати в неї перекладаючи карти та набираючи очки !!!
 
 # Rules of the game
 - Two players are given four random cards , you need to win two rounds , in each round you need to score more points than your opponent 
@@ -12,9 +9,11 @@
 - 
 # Правила гри
 - Двом гравцям дають чотири випадкові карти, вам потрібно виграти два раунди, у кожному раунді вам потрібно набрати більше очок ніж ваш суперник
-- Покладіть одну картку на стіл і натисніть Завершити Хід
+- Покладіть одну картку на стіл і натисніть ЗАВЕРШИТИ ХІД
 - Ви також можете зажати кнопку протягом двох секунд і пропустити хід (хід переходить до наступного гравця, який може викласти будь-яку кількість карт і завершити раунд)
-- Всі знищені або розіграні карти в попередньому раунді перейдуть до колоди з черепом 
+- Всі знищені або розіграні карти в попереднтьому раунді перейдуть колоди з черепом 
+
+
 
 
 # Getting Started with Create React App
