@@ -1,0 +1,126 @@
+.map {
+  width: 100%;
+  height: 100vh;
+}
+.borderMap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.boxUsers {
+  width: 15%;
+  height: 100%;
+}
+.battleCardMap {
+  width: 85%;
+  height: 100%;
+}
+.boxUsers > section {
+  width: 100%;
+  height: 50%;
+}
+.boxUser_one {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.boxUser_two {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.passBlock {
+  display: flex;
+  justify-content: center;
+}
+
+.btnPass, .btnChangeTurn , .roundEnd{
+  cursor: pointer;
+  position: absolute;
+ background-image: url('../../public/battleCard/board.jpg');
+ background-size: contain;
+  border: solid 2px #9dfab5;
+  margin-top: -40px;
+  height: 80px;
+  width: 80px;
+  font-weight: bold;
+  border-radius: 100px;
+  box-shadow: rgb(0 0 0 / 25%) 0px 54px 55px, rgb(0 0 0 / 12%) 0px -12px 30px,
+    rgb(0 0 0 / 12%) 0px 4px 6px, rgb(0 0 0 / 17%) 0px 12px 13px,
+    rgb(0 0 0 / 9%) 0px -3px 5px;
+}
+.btnPass{
+  background-image:none;
+  background-color: #7F0000;
+}
+.roundEnd{
+  background-image:none;
+  background-color: orangered;
+}
+.btnPass, .btnChangeTurn ,.roundEnd>p{
+  font-weight: 900;
+  color: white;
+  font-family: 'Indie Flower', cursive;
+font-family: 'Kaushan Script', cursive;
+}
+.user_one_score {
+  margin-top: auto;
+  margin-bottom: 45px;
+}
+.user_two_score {
+  margin-bottom: auto;
+  margin-top: 45px;
+}
+.score {
+  font-size: 50px;
+}
+
+.activeCard {
+  transition: all 0.5s ease-in-out;
+  position: relative;
+  transform: scale(1.4);
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2);
+}
+.battleCard {
+  width: 7%;
+  margin-left: 5px;
+}
+
+.current_img {
+  opacity: 100;
+}
+
+.ace {
+  object-fit: cover;
+  filter: saturate(0);
+  transition: all 0.5s ease-in-out;
+}
+.activeAce {
+  object-fit: cover;
+  transition: all 0.5s ease-in-out;
+  filter: saturate(5);
+  transform: scale(1.5);
+}
+
+
+
+
+
+/* .box{
+  position: relative;
+  transition: transform 2s;
+  transform-style: preserve-3d;
+}
+.box:hover{
+  transform: rotateY(180deg);
+}
+.btnChangeTurn{
+  transform: translateZ(100px);
+  position: absolute;
+}
+.btnPass{
+  transform: translateZ(0px);
+  position: absolute;
+
+} */
