@@ -184,3 +184,18 @@ position: absolute;
 .hidden {
   display: none;
 }
+
+
+
+.battleCardUser_two_life,.battleCardUser_one_life{
+  position: absolute;
+  left: 13px;
+  top: 2px;
+  font-size: 20px;
+}
+.battleCardUser_two_attack, .battleCardUser_one_attack{
+  position: absolute;
+  bottom: 0;
+  right: 2px;
+  font-size: 20px;
+}

@@ -59,6 +59,12 @@ const UserTwoCards = ({
       setUserTwo((state) => ({
         ...state,
         cardsInHand: firstLineLength.current.childNodes,
+        cardsInBattle: [
+          ...state.cardsInBattle,
+          ...state.cards.filter(
+            (ca) => ca.id === Number(card.getAttribute("data-id"))
+          ),
+        ],
       }));
       if (!playerPass && useFirstLineLengthOne !== 0) {
         firstLineLength.current.childNodes.forEach((img) => {
@@ -104,7 +110,7 @@ const UserTwoCards = ({
     <section className={classes.battleCardUser_two}>
       <div className={classes.reboundBlock}>
         <span className={classes.deckCardsNumUserTwo}>
-          {userTwo.numberOfDestroyedCards}
+          {userTwo.numberOfDestroyedCards.length}
         </span>
         <input
           draggable={false}
@@ -147,7 +153,9 @@ const UserTwoCards = ({
                 data-id={card.id}
                 data-power={card.power}
               >
-                <span>{card.power}</span>
+                <span className={classes.battleCardUser_two_life}>
+                 {card.power}🧡
+                </span>
                 <img
                   onMouseOver={addAboutCard}
                   onMouseOut={removeAboutCard}
@@ -160,7 +168,9 @@ const UserTwoCards = ({
                   alt={card.img}
                   data-id={card.id}
                 />
-                  <span>{card.attack}</span>
+                <span className={classes.battleCardUser_two_attack}>
+                ⚔{card.attack}
+                </span>
 
                 {/* <div className={`${classes.cardInfo}`}>
                   <p>Some text</p>

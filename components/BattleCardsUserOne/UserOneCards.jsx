@@ -53,6 +53,10 @@ const UserOneCards = ({
   }
   function dragDrop(e) {
     if (userOne.activePlayer) {
+      // console.log(card.getAttribute("data-id"))
+      // console.log(userOne.cards)
+ 
+
       e.target.classList.remove(classes.dropList);
       card.setAttribute("draggable", false);
       card.firstChild.nextSibling.setAttribute("data-user", "user1");
@@ -68,7 +72,9 @@ const UserOneCards = ({
       setUserOne((state) => ({
         ...state,
         cardsInHand: firstLineLength.current.childNodes,
+        cardsInBattle: [...state.cardsInBattle, ...state.cards.filter(ca=>ca.id===Number(card.getAttribute("data-id")))]
       }));
+
       if (!playerPass && useFirstLineLengthTwo !== 0) {
         firstLineLength.current.childNodes.forEach((img) => {
           img.setAttribute("draggable", false);
@@ -127,7 +133,7 @@ const UserOneCards = ({
   //   center.current = null;
   // });
  
-console.log(userOne.cards)
+
 
   return (
     <section className={classes.battleCardUser_one}>
@@ -140,7 +146,7 @@ console.log(userOne.cards)
           alt="pack"
         />
         <span className={classes.deckCardsNum}>
-          {userOne.numberOfDestroyedCards}
+          {userOne.numberOfDestroyedCards.length}
         </span>
       </div>
       <div className={`${classes.battleBlock} ${classes.rev}`}>
@@ -181,7 +187,7 @@ console.log(userOne.cards)
                 data-attack={card.attack}
                 onClickCapture={attackCard}
               >
-                      <span>{card.power}</span>
+                      <span  className={classes.battleCardUser_one_life}>{card.power}🧡</span>
                 <img
                   onMouseOver={addAboutCard}
                   onMouseOut={removeAboutCard}
@@ -194,7 +200,7 @@ console.log(userOne.cards)
                   alt={card.img}
                   data-id={card.id}
                 />
-                         <span>{card.attack}</span>
+                         <span  className={classes.battleCardUser_one_attack}>⚔{card.attack}</span>
                 {/* <div className={`${classes.cardInfo}`}>
                   <h3>{card.name}</h3>
                   <h4>{card.faction}</h4>
