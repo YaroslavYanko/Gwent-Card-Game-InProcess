@@ -104,7 +104,17 @@ font-family: 'Kaushan Script', cursive;
 }
 
 
-
+.card_return{
+  width: 500px;
+  height: 200px;
+  background: antiquewhite;
+  position: absolute;
+  margin: auto 0;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  transform: translate(-30%, -50%);
+}
 
 
 /* .box{

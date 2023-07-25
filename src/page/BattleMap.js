@@ -96,10 +96,20 @@ const BattleMap = () => {
       setUserOne((state) => ({
         ...state,
         winPoints: 0,
+        numberOfDestroyedCards: [
+          ...state.numberOfDestroyedCards,
+          ...state.cardsInBattle,
+        ],
+        cardsInBattle: [],
       }));
       setUserTwo((state) => ({
         ...state,
         winPoints: 0,
+        numberOfDestroyedCards: [
+          ...state.numberOfDestroyedCards,
+          ...state.cardsInBattle,
+        ],
+        cardsInBattle: [],
       }));
       clearBattleLinesCards([...userOne.cardsFromMap, ...userTwo.cardsFromMap]);
 
@@ -231,8 +241,17 @@ const BattleMap = () => {
           e.target.parentElement.remove();
           setUserTwo((state) => ({
             ...state,
-            // cardsUsed: [...state.cardsUsed, { ...state.cards[findCard] }],
-            // numberOfDestroyedCards: userOne.cardsUsed.length,
+            numberOfDestroyedCards: [
+              ...state.numberOfDestroyedCards,
+              ...state.cardsInBattle.filter(
+                (card) => card.id === Number(e.target.getAttribute("data-id"))
+              ),
+            ],
+            cardsInBattle: [
+              ...state.cardsInBattle.filter(
+                (card) => card.id !== Number(e.target.getAttribute("data-id"))
+              ),
+            ],
           }));
         }
       }
@@ -263,37 +282,35 @@ const BattleMap = () => {
           winPoints: totalPoints,
           cadrds: (state.cards[findCard].power = result),
         }));
-        console.log(userOne.cards)
-      
-        setUserOne((state) => ({
-          ...state,
-          cards:state.cards.filter(card=>Number(card.id)!==Number(e.target.getAttribute("data-id")))
-        }));
 
         setUserOne((state) => ({ ...state, canAttack: true }));
         setUserTwo((state) => ({ ...state, canAttack: false }));
         setAttack(null);
         if (e.target.getAttribute("data-power") <= 0) {
-          //e.target.parentElement.remove();
+          e.target.parentElement.remove();
 
           setUserOne((state) => ({
             ...state,
-            // cardsUsed: [{...state.cards[findCard]} ],
-            // numberOfDestroyedCards: userOne.cardsUsed.length,
+
+            numberOfDestroyedCards: [
+              ...state.numberOfDestroyedCards,
+              ...state.cardsInBattle.filter(
+                (card) => card.id === Number(e.target.getAttribute("data-id"))
+              ),
+            ],
+            cardsInBattle: [
+              ...state.cardsInBattle.filter(
+                (card) => card.id !== Number(e.target.getAttribute("data-id"))
+              ),
+            ],
           }));
-
-
-
-
         }
       }
     }
   }
 
- // react-dom.development.js:22839 Uncaught DOMException: Failed to execute 'removeChild' on 'Node': The node to be removed is not a child of this node.
+  // react-dom.development.js:22839 Uncaught DOMException: Failed to execute 'removeChild' on 'Node': The node to be removed is not a child of this node.
 
-
-  
   // function winGame() {
   //   //e.target.parentElement.classList.remove("hiddenMod");
 
@@ -377,7 +394,12 @@ const BattleMap = () => {
           />
 
           {/* /////////////User 2/////////////// */}
-
+          {/* <div className={classes.card_return}>
+            <h1>Return one card</h1>
+            {userOne.cards?.map((card) => {
+            return(  <img src={card.img} alt={card.img} />)
+            })}
+          </div> */}
           <UserTwoCards
             cardsUsedUserTwo={cardsUsedUserTwo}
             attackCard={attackCard}

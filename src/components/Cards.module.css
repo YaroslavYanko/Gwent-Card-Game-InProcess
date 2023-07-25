@@ -19,7 +19,7 @@
   flex-direction: column;
 }
 .packCard {
-  width: 50%;
+  width: 90px;
 }
 .reboundBlock {
   width: 20%;
@@ -37,8 +37,8 @@
 .battleCard {
   margin-left: 5px;
   border: solid gold 1px;
-  width: 100%;
-  height: 100%;
+  width: 100px;
+  height: 115px;
 }
 
 .activeCard {
@@ -113,8 +113,8 @@
   font-weight: bold;
 }
 .battleCard_wraper {
-  width: 8%;
-  height: 100%;
+  width: 100px;
+  height: 115px;
   position: relative;
   transition: all 0.2s ease-in-out;
   z-index: 0;
@@ -183,4 +183,19 @@ position: absolute;
 
 .hidden {
   display: none;
+}
+
+
+
+.battleCardUser_two_life,.battleCardUser_one_life{
+  position: absolute;
+  left: 13px;
+  top: 2px;
+  font-size: 20px;
+}
+.battleCardUser_two_attack, .battleCardUser_one_attack{
+  position: absolute;
+  bottom: 0;
+  right: 2px;
+  font-size: 20px;
 }

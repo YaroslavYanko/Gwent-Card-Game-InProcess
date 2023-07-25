@@ -36,7 +36,7 @@ export function DeckCardProvider({ children }) {
     name: "User One",
     winPoints: 0,
     winRaund: 0,
-    numberOfDestroyedCards: 0,
+    numberOfDestroyedCards: [],
     cardsUsed: [],
     cards: [],
     cardsFromMap: [],
@@ -45,12 +45,13 @@ export function DeckCardProvider({ children }) {
     canAttack:true,
     playerPass: false,
     mainDeck: 0,
+    cardsInBattle:[]
   });
   const [userTwo, setUserTwo] = useState({
     name: "User Two",
     winPoints: 0,
     winRaund: 0,
-    numberOfDestroyedCards: 0,
+    numberOfDestroyedCards: [],
     cardsUsed: [],
     cards: [],
     cardsFromMap: [],
@@ -59,6 +60,7 @@ export function DeckCardProvider({ children }) {
     canAttack:true,
     playerPass: false,
     mainDeck: 0,
+    cardsInBattle:[]
   });
 
   function randomCartUserOne() {
@@ -71,7 +73,7 @@ export function DeckCardProvider({ children }) {
       setUserOne((state) => ({
         ...state,
         cards: [...state.cards, ...removeCard],
-        numberOfDestroyedCards: state.cardsUsed.length,
+        // numberOfDestroyedCards: state.cardsUsed.length,
         mainDeck: useDeck1.length,
   
       }));
@@ -89,7 +91,7 @@ export function DeckCardProvider({ children }) {
       setUserTwo((state) => ({
         ...state,
         cards: [...state.cards, ...removeCard],
-        numberOfDestroyedCards: state.cardsUsed.length,
+        // numberOfDestroyedCards: state.cardsUsed.length,
         mainDeck: useDeck2.length,
       }));
     }
